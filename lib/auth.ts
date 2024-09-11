@@ -38,5 +38,5 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     error: '/signin',
   },
   adapter: PrismaAdapter(prisma),
-  debug: process.env.NODE_ENV !== 'development',
+  debug: process.env.NODE_ENV === 'development',
 })

@@ -2,7 +2,6 @@
 
 import { NextResponse } from 'next/server'
 import { auth } from './lib/auth'
-import { redirect } from 'next/dist/server/api-utils'
 
 export const middleware = async (request: Request) => {
 
@@ -12,7 +11,7 @@ export const middleware = async (request: Request) => {
   const requestHeaders = new Headers(request.headers)
   const redirectPath = encodeURIComponent(request.url.replace('http://', '').replace('https://', '')).split('/')[1] ?? ''
   requestHeaders.set('x-url', redirectPath)
-  
+
   if (!_auth?.user) {
     NextResponse.redirect(new URL('/signin', request.url))
   }
