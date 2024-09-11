@@ -2,21 +2,45 @@
   "root": true,
   "extends": [
     "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
     "next/core-web-vitals",
-    "plugin:testing-library/react",
-    "plugin:jest-dom/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/eslint-recommended"
   ],
   "parser": "@typescript-eslint/parser",
-  "parserOptions": { "project": ["./tsconfig.json"] },
-  "plugins": ["@typescript-eslint"],
-  "rules": {
-    "block-spacing": ["error", "always"],
-    "quotes": ["error", "single"],
-    "semi": ["error", "always"],
-    "indent": ["error", 2],
-    "no-multi-spaces": ["error"],
-    "react-hooks/exhaustive-deps": "off"
+  "parserOptions": {
+    "project": [
+      "./tsconfig.json"
+    ]
   },
-  "ignorePatterns": ["src/**/*.test.ts", "src/frontend/generated/*", "src/components/ui/*"]
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "rules": {
+    "block-spacing": [
+      "error",
+      "always"
+    ],
+    "quotes": [
+      "error",
+      "single"
+    ],
+    "semi": [
+      "error",
+      "never"
+    ],
+    "indent": [
+      "error",
+      2
+    ],
+    "no-multi-spaces": [
+      "error"
+    ],
+    "react-hooks/exhaustive-deps": "warn"
+  },
+  "ignorePatterns": [
+    "**/*.test.ts",
+    "frontend/generated/*",
+    "components/ui/*",
+    "node_modules"
+  ]
 }
