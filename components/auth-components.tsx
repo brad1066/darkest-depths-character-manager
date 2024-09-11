@@ -1,8 +1,8 @@
 'use client'
 
-import { signIn } from 'next-auth/react'
+import { signOut } from 'next-auth/react'
 import { Button } from './ui/button'
 
-export function SignInButton() {
-  return <Button onClick={() => signIn()}>Sign in</Button>
+export function SignOutButton() {
+  return <Button onClick={() => signOut()}>Sign out</Button>
 }

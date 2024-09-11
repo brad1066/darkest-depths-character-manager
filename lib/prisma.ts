@@ -12,7 +12,6 @@ const neon = new Pool({
   password: process.env.DATABASE_PASSWORD,
   database: process.env.DATABASE_DATABASE,
 })
-// console.log('neon', neon)
 const adapter = new PrismaNeon(neon)
 
 const globalForPrisma = globalThis as unknown as { prisma: PrismaClient }
