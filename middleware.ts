@@ -1,9 +1,11 @@
 'use server'
 
-import { NextResponse } from 'next/server'
+import { NextResponse, type NextRequest } from 'next/server'
 import { auth } from './lib/auth'
+import NextAuth from 'next-auth'
+import authConfig from './auth.config'
 
-export const middleware = async (request: Request) => {
+export const middleware = async (request: NextRequest) => {
 
   const _auth = await auth()
 
@@ -12,11 +14,11 @@ export const middleware = async (request: Request) => {
   const redirectPath = encodeURIComponent(request.url.replace('http://', '').replace('https://', '')).split('/')[1] ?? ''
   requestHeaders.set('x-url', redirectPath)
 
-  if (!_auth?.user) {
+  if (request.nextUrl.pathname != '/signin' && _auth?.user == undefined) {
     NextResponse.redirect(new URL('/signin', request.url))
   }
 
-  const response = NextResponse.next({
+  NextResponse.next({
     request: {
       // Apply new request headers
       headers: requestHeaders,
