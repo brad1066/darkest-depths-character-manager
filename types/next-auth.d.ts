@@ -6,7 +6,8 @@ import {
 declare module 'next-auth' {
   interface Session extends DefaultSession {
     user: DefaultSession['user'] & {
-      id: string;
+      id: string
+      role?: Role
     };
   }
   interface User extends DefaultUser {

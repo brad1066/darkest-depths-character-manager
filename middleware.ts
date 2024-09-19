@@ -2,8 +2,6 @@
 
 import { NextResponse, type NextRequest } from 'next/server'
 import { auth } from './lib/auth'
-import NextAuth from 'next-auth'
-import authConfig from './auth.config'
 
 export const middleware = async (request: NextRequest) => {
 

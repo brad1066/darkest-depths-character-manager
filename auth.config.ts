@@ -14,11 +14,12 @@ export default {
       },
       profile: (profile) => {
         return {
-          id: profile.id,
+          id: profile.sub,
           name: profile.name,
           email: profile.email,
           image: profile.picture,
           role: profile.role ?? Role.USER,
+          emailVerified: profile.email_verified,
         }
       }
     })],

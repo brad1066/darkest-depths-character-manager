@@ -20,9 +20,8 @@ export default async function SignInPage() {
         <form
           action={async () => {
             'use server'
-            try {
-              await signIn('google')
-            } catch (error) {
+            try { await signIn('google') }
+            catch (error) {
               if (error instanceof AuthError) {
                 return redirect(`/api/auth/signin&error=${error.type}`)
               }
