@@ -24,6 +24,7 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+  role          Role            @default(USER)
   // Optional for WebAuthn support
   Authenticator Authenticator[]
 
@@ -89,4 +90,9 @@ model Authenticator {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@id([userId, credentialID])
+}
+
+enum Role {
+  USER
+  ADMIN
 }
