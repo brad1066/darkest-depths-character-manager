@@ -1,19 +1,24 @@
-import Google from 'next-auth/providers/google'
+import GoogleProvider from 'next-auth/providers/google'
 import type { NextAuthConfig } from 'next-auth'
 import { Role } from '@prisma/client'
 
 // Notice this is only an object, not a full Auth.js instance
 export default {
   providers: [
-    Google({
+    GoogleProvider({
+      id: 'google',
+      name: 'Google',
       authorization: {
-        clientID: process.env.GOOGLE_CLIENT_ID,
-        clientSecret: process.env.GOOGLE_CLIENT_SECRET
+        clientId: process.env.GOOGLE_CLIENT_ID,
+        clientSecret: process.env.GOOGLE_CLIENT_SECRET,
       },
       profile: (profile) => {
         return {
+          id: profile.id,
+          name: profile.name,
+          email: profile.email,
+          image: profile.picture,
           role: profile.role ?? Role.USER,
-          ...profile
         }
       }
     })],
